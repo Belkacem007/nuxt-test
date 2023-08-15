@@ -6,7 +6,7 @@ export const useEmailsStore = defineStore('emails', {
             {
                 id: 0,
                 message: 'Wave hello with video, reactions and more now in huddles',
-                description: 'In the early days of the pandemic, audio-only huddles helped recreate the informal discussions that traditionally took place in office cafés and hallways. Whether your team is remote, in the office, or a mix of both, working alongside your colleagues is as important as ever.'
+                description: 'In the early days of the pandemic, audio-only huddles helped recreate the informal discussions that traditionally took place in office cafés and hallways. Whether your team is remote, in the office, or a mix of both, working alongside your colleagues is as important as ever, In the early days of the pandemic, audio-only huddles helped recreate the informal discussions that traditionally took place in office cafés and hallways. Whether your team is remote, in the office, or a mix of both, working alongside your colleagues is as important as ever.'
             },
             {
                 id: 1,

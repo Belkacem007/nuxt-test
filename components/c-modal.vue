@@ -13,8 +13,12 @@ const props = defineProps({
 
 const emit = defineEmits();
 
+const toggleModal = computed(() => {
+    return props.show ? 'slide__modal' : 'close__modal'
+})
+
 const closeModal = () => {
-    emit('close', props.show)
+    emit('close', false)
 }
 
 const closeModalOutside = () => {
@@ -23,12 +27,25 @@ const closeModalOutside = () => {
     }
 }
 
+onMounted(() => {
+    window.addEventListener('keydown', closeModalOnEsc);
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('keydown', closeModalOnEsc)
+})
+
+const closeModalOnEsc = (event) => {
+    if (event.key === 'Escape') {
+        closeModal()
+    }
+}
 
 </script>
 
 <template>
     <div v-if="show" class="overlay__modal" @click="closeModalOutside">
-        <div class="modal slide__modal" @click.stop>
+        <div class="modal" :class="toggleModal" @click.stop>
             <div class="top__nav__modal">
                 <div @click="closeModal" class="wrapper" style="margin-right: 40px; cursor: pointer;">
                     <img :src="`_nuxt/assets/icons/close.svg`" alt="close">
@@ -47,6 +64,24 @@ const closeModalOutside = () => {
             </div>
 
         </div>
-
     </div>
 </template>
+
+<style scoped>
+/* ... other styles ... */
+
+.close__modal {
+    animation: close-in .3s ease-in-out;
+}
+
+@keyframes close-in {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+</style>
+

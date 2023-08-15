@@ -44,10 +44,8 @@ const showModal = ref(false);
 
 
 const openModal = (email) => {
-
     showModal.value = true
     mail.value = email
-    console.log(mail.value);
 }
 
 
